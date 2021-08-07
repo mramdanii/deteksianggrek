@@ -19,7 +19,7 @@
 		let orchidModelUrl = 'https://teachablemachine.withgoogle.com/models/SgbvD_jhk/';
 		const leafDiseaseclassifier = ml5.imageClassifier(leafDiseaseModelURL + 'model.json', modelLoaded);
 		const orchidClassifier = ml5.imageClassifier(orchidModelUrl + 'model.json', modelLoaded);
-		const objectModel = ml5.imageClassifier('MobileNet', modelLoaded);
+		// const objectModel = ml5.imageClassifier('MobileNet', modelLoaded);
 
 
 
@@ -48,20 +48,20 @@
 			labels.dispose();
 		}
 
-		function predictObject() {
-			objectModel.predict(document.getElementById("image"),
-				function (err, results) {
+		// function predictObject() {
+		// 	objectModel.predict(document.getElementById("image"),
+		// 		function (err, results) {
 					
-					if (err) {
-						console.error(err);
-					}
-					if (results && results[0].label) {
-						let label = document.getElementById("result1").textContent = (results[0].label +' | Confidence : ' + results[0].confidence.toFixed(2)*100);
-						// alert('results = '+results[0].label+' Confidence = ' + results[0].confidence.toFixed(2) * 100 +'%');
-					}
+		// 			if (err) {
+		// 				console.error(err);
+		// 			}
+		// 			if (results && results[0].label) {
+		// 				let label = document.getElementById("result1").textContent = (results[0].label +' | Confidence : ' + results[0].confidence.toFixed(2)*100);
+		// 				// alert('results = '+results[0].label+' Confidence = ' + results[0].confidence.toFixed(2) * 100 +'%');
+		// 			}
 
-				});
-		}
+		// 		});
+		// }
 
 		function predictOrhid() {
 			orchidClassifier.predict(document.getElementById("image"),
@@ -95,8 +95,8 @@
 		}
 
 		function predict(){
+			// predictObject();
 			predictOrhid();
-			predictObject();
 			predictLeafDisease();
 
 
@@ -117,15 +117,7 @@
 		<table>
 			<tr>
 				<td>
-					<p>results : </p>
-				</td>
-				<td>
-					<p id="result1"></p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p>results : </p>
+					<p>Orchid Genus : </p>
 				</td>
 				<td>
 					<p id="result2"></p>
@@ -133,7 +125,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p>results : </p>
+					<p>Disease : </p>
 				</td>
 				<td>
 					<p id="result3"></p>
