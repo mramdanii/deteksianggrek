@@ -26,6 +26,7 @@
 		// When the model is loaded
 		function modelLoaded() {
 			console.log("Model Loaded!");
+			let label = document.getElementById("result2").textContent = "Model Loaded!";
 		}
 		const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 		function doPrediction(testDataSize = 500) {
@@ -110,7 +111,8 @@
 		<h1 style="color: green;">Orchid Leaf Disease Detection</h1>
 		<br>
 		<img src="image.jpg" alt="" id="image"   class="img-fluid" />
-		<br><br>
+		<br>
+		<p><span id="modelStatus">Loading MobileNet</span></p><br>
 		<input type="file" accept="image/*"onchange="loadFile(event)"name="image" id="file" />
 		<button onclick="predict()">Predict</button>
 		<br>	
