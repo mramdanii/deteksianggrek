@@ -28,26 +28,7 @@
 			console.log("Model Loaded!");
 			let label = document.getElementById("modelStatus").textContent = "Model Loaded!";
 		}
-		const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-		function doPrediction(testDataSize = 500) {
-			const testData = data.nextTestBatch(testDataSize);
-			const testxs = testData.xs.reshape([testDataSize, 28, 28, 1]);
-			const labels = testData.labels.argMax([-1]);
-			const preds = model.predict(testxs).argMax([-1]);
-			testxs.dispose();
-			return [preds, labels];
-		}
 
-		async function showAccuracy() {
-			const [preds, labels] = doPrediction();
-			const classAccuracy = await tfvis.metrics.perClassAccuracy(labels, preds);
-			const container = {
-				name: 'Accuracy',
-				tab: 'Evaluation'
-			};
-			leafDiseaseclassifier.show.perClassAccuracy(container, classAccuracy, classNames);
-			labels.dispose();
-		}
 
 		// function predictObject() {
 		// 	objectModel.predict(document.getElementById("image"),
